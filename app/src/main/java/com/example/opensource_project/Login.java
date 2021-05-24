@@ -24,5 +24,14 @@ public class Login extends AppCompatActivity {
             }
         });
 
+        Button registButtom = (Button) findViewById(R.id.Changeregistration);
+        registButtom.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), registrableUser.class);
+                startActivity(intent);
+            }
+        });
+
     }
 }

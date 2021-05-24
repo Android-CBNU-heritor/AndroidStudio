@@ -7,17 +7,17 @@ import androidx.viewpager2.widget.CompositePageTransformer;
 import androidx.viewpager2.widget.MarginPageTransformer;
 import androidx.viewpager2.widget.ViewPager2;
 
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
-
-import me.relex.circleindicator.CircleIndicator;
-import me.relex.circleindicator.CircleIndicator3;
 
 public class MainActivity extends AppCompatActivity {
     //Initialize variable
     ViewPager2 vpHorizontal;
     int[] images = {R.drawable.fish,R.drawable.menu2,R.drawable.menu3,R.drawable.menu4};
     MainAdapter adapter;
+    SQLiteDatabase dbWrite;
+    anyDatabase anydatabase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,5 +60,8 @@ public class MainActivity extends AppCompatActivity {
         });
         //Set page transform
         vpHorizontal.setPageTransformer(transformer);
+
+
+
     }
 }
