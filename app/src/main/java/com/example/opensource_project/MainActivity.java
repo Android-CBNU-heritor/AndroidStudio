@@ -9,6 +9,7 @@ import androidx.viewpager2.widget.ViewPager2;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.LinearLayout;
 
 import me.relex.circleindicator.CircleIndicator;
 import me.relex.circleindicator.CircleIndicator3;
@@ -16,6 +17,8 @@ import me.relex.circleindicator.CircleIndicator3;
 public class MainActivity extends AppCompatActivity {
     //Initialize variable
     ViewPager2 vpHorizontal;
+    LinearLayout layoutIndicator;
+
     int[] images = {R.drawable.fish,R.drawable.menu2,R.drawable.menu3,R.drawable.menu4};
     MainAdapter adapter;
 
@@ -53,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
         transformer.addTransformer(new ViewPager2.PageTransformer() {
             @Override
             public void transformPage(@NonNull View page, float position) {
-                float v = 1 - Math.abs(position);
+                float v = 3 - Math.abs(position);
                 //Set scale y
                 page.setScaleY(0.5f + v * 0.2f);
             }
