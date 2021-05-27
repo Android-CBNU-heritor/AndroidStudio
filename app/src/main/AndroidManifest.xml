@@ -20,7 +20,7 @@
 
         <activity android:name=".MainActivity"></activity>
         <activity android:name=".Events" />
-        <activity android:name=".registrableUser"/>
+        <activity android:name=".registration.registrationService"/>
 
     </application>
 

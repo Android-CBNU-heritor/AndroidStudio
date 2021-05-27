@@ -11,13 +11,15 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 
+import com.example.opensource_project.registration.createDatabaseController;
+
 public class MainActivity extends AppCompatActivity {
     //Initialize variable
     ViewPager2 vpHorizontal;
     int[] images = {R.drawable.fish,R.drawable.menu2,R.drawable.menu3,R.drawable.menu4};
     MainAdapter adapter;
     SQLiteDatabase dbWrite;
-    anyDatabase anydatabase;
+    createDatabaseController anydatabase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
