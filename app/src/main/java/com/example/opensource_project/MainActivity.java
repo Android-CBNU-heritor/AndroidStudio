@@ -7,8 +7,11 @@ import androidx.viewpager2.widget.CompositePageTransformer;
 import androidx.viewpager2.widget.MarginPageTransformer;
 import androidx.viewpager2.widget.ViewPager2;
 
+import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.LinearLayout;
 
 import me.relex.circleindicator.CircleIndicator;
@@ -22,10 +25,14 @@ public class MainActivity extends AppCompatActivity {
     int[] images = {R.drawable.fish,R.drawable.menu2,R.drawable.menu3,R.drawable.menu4};
     MainAdapter adapter;
 
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
 
 
         //Assign variable
