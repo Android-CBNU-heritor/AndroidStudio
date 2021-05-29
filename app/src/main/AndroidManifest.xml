@@ -18,7 +18,9 @@
         </activity>
         <activity android:name=".MainActivity"></activity>
         <activity android:name=".Events" />
-        <activity android:name=".DetailedMenu" />
+        <activity android:name=".DetailedMenu1" />
+        <activity android:name=".DetailedMenu4" />
+        <activity android:name=".registration.registrationService"/>
 
     </application>
 

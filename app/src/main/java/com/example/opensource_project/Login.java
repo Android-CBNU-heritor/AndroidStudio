@@ -6,7 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
+import com.example.opensource_project.registration.registrationService;
 
 public class Login extends AppCompatActivity {
 
@@ -15,16 +15,18 @@ public class Login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        Button registrationButton = (Button) findViewById(R.id.registerButton);
-        Button loginbutton = (Button) findViewById(R.id.Login);
 
-        registrationButton.setOnClickListener(new View.OnClickListener(){
+        Button loginbutton = (Button) findViewById(R.id.Login);
+        Button registButton = (Button) findViewById(R.id.Changeregistration);
+
+        registButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v){
-                Intent intent = new Intent(getApplicationContext(), DetailedMenu.class);
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), registrationService.class);
                 startActivity(intent);
             }
         });
+
 
         loginbutton.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -83,16 +83,18 @@
                 android:layout_marginTop="10dp"
                 android:layout_gravity="center"/>
 
+            <!-- crate a registration button -->
             <Button
-                android:layout_width="wrap_content"
+                android:layout_width="280dp"
+                android:id="@+id/Changeregistration"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:textSize="18dp"
-                android:background="#ffffff"
-                android:layout_marginTop="10dp"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:textColor="#ffffff"
+                android:background="#03b594"
                 android:text="Registration"
-                android:id="@+id/registerButton"
-                />
+                android:layout_marginTop="10dp"
+                android:layout_gravity="center"/>
 
 
         </LinearLayout>

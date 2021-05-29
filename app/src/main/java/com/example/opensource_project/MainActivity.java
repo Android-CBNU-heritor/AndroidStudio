@@ -12,7 +12,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
+
+import com.example.opensource_project.registration.registrationService;
 
 import me.relex.circleindicator.CircleIndicator;
 import me.relex.circleindicator.CircleIndicator3;
@@ -26,12 +29,31 @@ public class MainActivity extends AppCompatActivity {
     MainAdapter adapter;
 
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
+        // -- Detailed menu4 - Chicken --
+        ImageButton detailedMenu4 = (ImageButton) findViewById(R.id.imageButton4);
+        detailedMenu4.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                Intent intent = new Intent(getApplicationContext(), DetailedMenu4.class);
+                startActivity(intent);
+            }
+        });
+
+        // -- Detailed menu1 - Pizza --
+        ImageButton detailedMenu1 = (ImageButton) findViewById(R.id.imageButton1);
+        detailedMenu1.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                Intent intent = new Intent(getApplicationContext(), DetailedMenu1.class);
+                startActivity(intent);
+            }
+        });
 
 
 

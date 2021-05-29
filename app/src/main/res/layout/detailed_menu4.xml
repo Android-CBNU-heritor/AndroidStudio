@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".DetailedMenu">
+    tools:context=".DetailedMenu4">
 
     <LinearLayout
         android:layout_width="match_parent"
