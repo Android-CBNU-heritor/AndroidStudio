@@ -44,7 +44,7 @@
             android:layout_marginLeft="20dp"
             android:textColor="#ffffff"
             android:background="#03b594"
-            android:text="중복확인"/>
+            android:text="중복확인" />
 
 
     </LinearLayout>

@@ -61,7 +61,8 @@ public class MainActivity extends AppCompatActivity {
         detailedMenu2.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                Toast.makeText(MainActivity.this, "모든 업체가 금일 영업을 종료했습니다.", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getApplicationContext(), Menu_no.class);
+                startActivity(intent);
             }
         });
         ImageButton detailedMenu3 = (ImageButton) findViewById(R.id.imageButton3);
