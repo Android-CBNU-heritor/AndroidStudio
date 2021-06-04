@@ -57,6 +57,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/layout_btn1"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
@@ -88,12 +89,12 @@
                         android:id="@+id/textView1"
                         android:layout_width="wrap_content"
                         android:layout_height="25dp"
-                        android:text="도미노피자 충북대점"
+                        android:text="도미노 치즈케이크 블랙타이거"
                         android:textSize="20dp" />
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="25dp"
-                        android:text="450m | 방문포장"
+                        android:text="충북대점 | 450m | 방문포장"
                         android:textSize="15dp" />
                     <TextView
                         android:layout_width="wrap_content"
@@ -105,7 +106,7 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/layout_btn1"
+                android:id="@+id/layout_btn2"
                 android:layout_width="match_parent"
                 android:layout_height="120dp"
                 android:orientation="horizontal">
@@ -129,12 +130,12 @@
                         android:id="@+id/textView2"
                         android:layout_width="wrap_content"
                         android:layout_height="25dp"
-                        android:text="pizzahut 충북대점"
+                        android:text="pizzahut (상품 준비 중)"
                         android:textSize="20dp" />
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="25dp"
-                        android:text="650m | 방문포장"
+                        android:text="충북대점 | 650m | 방문포장"
                         android:textSize="15dp" />
                     <TextView
                         android:layout_width="wrap_content"
@@ -172,12 +173,12 @@
                         android:id="@+id/textView3"
                         android:layout_width="wrap_content"
                         android:layout_height="25dp"
-                        android:text="굽네치킨 충북대점"
+                        android:text="피자스쿨 (상품 없음)"
                         android:textSize="20dp" />
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="25dp"
-                        android:text="880m | 방문포장"
+                        android:text="복대동점 | 880m | 방문포장"
                         android:textSize="15dp" />
                     <TextView
                         android:layout_width="wrap_content"
@@ -213,12 +214,12 @@
                         android:id="@+id/textView4"
                         android:layout_width="wrap_content"
                         android:layout_height="25dp"
-                        android:text="네네치킨 복대점"
+                        android:text="피자마루 (상품 없음)"
                         android:textSize="20dp" />
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="25dp"
-                        android:text="1.2km | 방문포장"
+                        android:text="복대동점 | 1.2km | 방문포장"
                         android:textSize="15dp" />
                     <TextView
                         android:layout_width="wrap_content"

@@ -14,6 +14,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.example.opensource_project.registration.registrationService;
 
@@ -35,6 +36,16 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
+        // -- Detailed menu1 - Pizza --
+        ImageButton detailedMenu1 = (ImageButton) findViewById(R.id.imageButton1);
+        detailedMenu1.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                Intent intent = new Intent(getApplicationContext(), DetailedMenu1.class);
+                startActivity(intent);
+            }
+        });
+
         // -- Detailed menu4 - Chicken --
         ImageButton detailedMenu4 = (ImageButton) findViewById(R.id.imageButton4);
         detailedMenu4.setOnClickListener(new View.OnClickListener(){
@@ -45,15 +56,25 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        // -- Detailed menu1 - Pizza --
-        ImageButton detailedMenu1 = (ImageButton) findViewById(R.id.imageButton1);
-        detailedMenu1.setOnClickListener(new View.OnClickListener(){
+        // 등록 업체가 없음을 알림
+        ImageButton detailedMenu2 = (ImageButton) findViewById(R.id.imageButton2);
+        detailedMenu2.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                Intent intent = new Intent(getApplicationContext(), DetailedMenu1.class);
-                startActivity(intent);
+                Toast.makeText(MainActivity.this, "모든 업체가 금일 영업을 종료했습니다.", Toast.LENGTH_SHORT).show();
             }
         });
+        ImageButton detailedMenu3 = (ImageButton) findViewById(R.id.imageButton3);
+        detailedMenu3.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                Toast.makeText(MainActivity.this, "등록된 업체가 없습니다.", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
+
+
 
 
 

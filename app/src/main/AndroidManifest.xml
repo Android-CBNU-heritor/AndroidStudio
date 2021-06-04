@@ -20,6 +20,9 @@
         <activity android:name=".Events" />
         <activity android:name=".DetailedMenu1" />
         <activity android:name=".DetailedMenu4" />
+        <activity android:name=".Payment"/>
+        <activity android:name=".Payment2"/>
+        <activity android:name=".Practice_db" />
         <activity android:name=".registration.registrationService"/>
 
     </application>
