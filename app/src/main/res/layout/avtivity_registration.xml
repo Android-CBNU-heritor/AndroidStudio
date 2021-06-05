@@ -23,7 +23,7 @@
 
 
         <EditText
-            android:id="@+id/editTextId"
+            android:id="@+id/editTextID"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -58,7 +58,7 @@
         android:layout_gravity="center">
 
         <EditText
-            android:id="@+id/editTextTextPassword"
+            android:id="@+id/editTextPW"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -68,7 +68,7 @@
             android:inputType="textPassword" />
 
         <EditText
-            android:id="@+id/editTextName"
+            android:id="@+id/editTextPWcheck"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -79,7 +79,7 @@
             android:inputType="textPassword" />
 
         <EditText
-            android:id="@+id/editTextdirth"
+            android:id="@+id/editTextEmail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -87,7 +87,7 @@
             android:hint="e-mail"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
-            android:inputType="text|date" />
+            android:inputType="textEmailAddress" />
 
 
     </LinearLayout>

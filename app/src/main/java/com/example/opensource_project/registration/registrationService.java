@@ -5,6 +5,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.nfc.Tag;
 import android.os.Bundle;
 import android.util.Log;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -17,6 +18,8 @@ import static android.content.ContentValues.TAG;
 
 import com.example.opensource_project.R;
 import com.example.opensource_project.registration.createDatabaseController;
+
+import java.util.regex.Pattern;
 
 public class registrationService extends AppCompatActivity {
 
@@ -43,7 +46,7 @@ public class registrationService extends AppCompatActivity {
                 EditText getUserSting;
                 createDatabaseController mainDB = new createDatabaseController(getApplicationContext(), "Maindb", null, 1);
 
-                getUserSting = (EditText) findViewById(R.id.editTextId); // 유저 아이디 입력 --> 가져오기
+                getUserSting = (EditText) findViewById(R.id.editTextID); // 유저 아이디 입력 --> 가져오기
                 userId = getUserSting.getText().toString();              // String으로 뽑아내기
 
                 SQLiteDatabase database;                                 // Sqlite db 연결을 위한 객체
@@ -56,7 +59,13 @@ public class registrationService extends AppCompatActivity {
                 cmp = cursor.getString(0); // 에러 유발 코드
 
                 flag = cmp.equals(userId);
-                Log.d(TAG, "첫번쨰 커서가 가리키는 값?: "+ cmp);
+
+                if(userId == null || userId.equals("") || userId.length() == 0 ){
+                    Toast.makeText(getApplicationContext(), "아이디를 입력하세요.", Toast.LENGTH_SHORT).show();
+                    signUpIsOk = false; // [*예외처리]: 가능한 아이디 중복 검사 이후 빈칸 만들고 다시 재검사
+                    return;
+                }
+
                 do{
                     cmp = cursor.getString(0);
 
@@ -71,6 +80,7 @@ public class registrationService extends AppCompatActivity {
                     }
                 }while (cursor.moveToNext());// 에러 유발 지점1 - 이미 위에서 첫번째 cursor item의 string을 가지고 왔는데, while 조건문이 처음에
                 // 실행되면서 cursor가 이동한다. 따라서 두번째부터 비교를 시작하고 중복된 아이디를 찾을 수 없음
+                Log.d(TAG, "사용자 테이블 비교 끝");
 
                 if (!flag){
                     Toast.makeText(getApplicationContext(), " 사용 가능한 아이디입니다!", Toast.LENGTH_SHORT).show();
@@ -98,19 +108,47 @@ public class registrationService extends AppCompatActivity {
                 database = mainDB.getWritableDatabase();
                 mainDB.onCreate(database);
 
-                EditText idText, nameText, passWdText, birthText;
-                birthText = (EditText) findViewById(R.id.editTextdirth);
-                idText = (EditText) findViewById(R.id.editTextId);
-                nameText = (EditText) findViewById(R.id.editTextName);
-                passWdText = (EditText) findViewById(R.id.editTextTextPassword);
+                EditText idText, pwText, pwCheckText, emailText;
+                idText = (EditText) findViewById(R.id.editTextID);
+                pwText = (EditText) findViewById(R.id.editTextPW);
+                pwCheckText = (EditText) findViewById(R.id.editTextPWcheck);
+                emailText = (EditText) findViewById(R.id.editTextEmail);
+
+                // matches의 올바른 parameter로 바꾸기 위해 CharSequence로 casting
+                CharSequence email = (CharSequence) emailText.getText();
+                CharSequence pw = (CharSequence) pwText.getText();
+
+                // ** 회원가입 유효성 체크
+
+                //비밀번호 유효성
+                if(!Pattern.matches("^(?=.*\\d)(?=.*[~`!@#$%\\^&*()-])(?=.*[a-zA-Z]).{8,20}$", pw))
+                {
+                    Toast.makeText(getApplicationContext(),"비밀번호 형식을 지켜주세요.",Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                // 비밀번호 확인 검사
+                if (!pw.toString().equals(pwCheckText.getText().toString())){
+                    Toast.makeText(getApplicationContext(), "비밀번호가 일치하지 않습니다.", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                // 이메일 형식 체크
+                if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+                    Toast.makeText(getApplicationContext(),"이메일 형식이 아닙니다",Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+
+
 
 
                 // 다음번엔 조금 더 쉬운 db.insert();를 사용해 보자.
                 String query = "INSERT INTO userTable VALUES("
                         + "'" + idText.getText().toString() + "'" + ", "
-                        + "'" + passWdText.getText().toString() + "'" + ", "
-                        + "'" + nameText.getText().toString() + "'" + ", "
-                        + "'" + birthText.getText().toString() + "'" + ");";
+                        + "'" + pwText.getText().toString() + "'" + ", "
+                        + "'" + pwCheckText.getText().toString() + "'" + ", "
+                        + "'" + emailText.getText().toString() + "'" + ");";
 
                 database.execSQL(query);
                 database.close();
