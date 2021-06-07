@@ -16,7 +16,7 @@ public class createDatabaseController extends SQLiteOpenHelper {
     // domain = id, passwd, name, birth... all of these are text type
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("CREATE TABLE IF NOT EXISTS userTable (id TEXT PRIMARY KEY NOT NULL, pw TEXT NOT NULL, pwCheck TEXT NOT NULL, email TEXT );");
+        db.execSQL("CREATE TABLE IF NOT EXISTS userTable (id TEXT PRIMARY KEY NOT NULL, pw TEXT NOT NULL, pwCheck TEXT NOT NULL, email TEXT, auth integer );");
     }
 
     @Override

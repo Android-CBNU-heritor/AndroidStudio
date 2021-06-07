@@ -54,10 +54,9 @@ public class registrationService extends AppCompatActivity {
                 mainDB.onCreate(database);
 
                 Cursor cursor;
-                cursor = database.rawQuery("SELECT id FROM userTable", null);
+                cursor = database.rawQuery("SELECT * FROM userTable", null);
                 cursor.moveToFirst();
-                cursor.moveToNext();
-                cmp = cursor.getString(0); // 에러 유발 코드
+                cmp = cursor.getString(0); // 에러 유발 지점: 해결 --> cursor 이동과 getString 개념 잘 숙지할 것 
 
                 flag = cmp.equals(userId);
 
@@ -146,10 +145,11 @@ public class registrationService extends AppCompatActivity {
 
                 // 다음번엔 조금 더 쉬운 db.insert();를 사용해 보자.
                 String query = "INSERT INTO userTable VALUES("
-                        + "'" + idText.getText().toString() + "'" + ", "
-                        + "'" + pwText.getText().toString() + "'" + ", "
-                        + "'" + pwCheckText.getText().toString() + "'" + ", "
-                        + "'" + emailText.getText().toString() + "'" + ");";
+                        + "'" + idText.getText().toString() + "', "
+                        + "'" + pwText.getText().toString() + "', "
+                        + "'" + pwCheckText.getText().toString() + "', "
+                        + "'" + emailText.getText().toString() + "',"
+                        + "1);";
 
                 database.execSQL(query);
                 database.close();
