@@ -39,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = getIntent();
 
         boolean login_flag = intent.getExtras().getBoolean("login_flag");
+        int auth = intent.getExtras().getInt("auth");
         if(login_flag == true){
             String userID = intent.getExtras().getString("userID");
         }
@@ -53,7 +54,8 @@ public class MainActivity extends AppCompatActivity {
                 boolean login_logout = login_flag;
                 Intent logout = new Intent(getApplicationContext(), Login.class);
                 if (login_logout == true){
-                    login_logout = false; // 사용하진 않았지만, 혹시 몰라 일단 둠
+                    login_logout = false; // 사용하진 않지만, 혹시 몰라 일단 둠
+                    Toast.makeText(getApplicationContext(), "로그아웃 되었습니다.", Toast.LENGTH_SHORT).show();
                     startActivity(logout);
                 }
                 else {
@@ -69,8 +71,10 @@ public class MainActivity extends AppCompatActivity {
         detailedMenu1.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                Intent intent = new Intent(getApplicationContext(), DetailedMenu1.class);
-                startActivity(intent);
+                Intent new_intent = new Intent(getApplicationContext(), DetailedMenu1.class);
+                new_intent.putExtra("login_flag", login_flag);
+                new_intent.putExtra("auth", auth); // Detailed에서 권한에 따라 메뉴를 등록하는 버튼을 보거나 보지 않기 위해 사용
+                startActivity(new_intent);
             }
         });
 
@@ -79,12 +83,14 @@ public class MainActivity extends AppCompatActivity {
         detailedMenu4.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                Intent intent = new Intent(getApplicationContext(), DetailedMenu4.class);
-                startActivity(intent);
+                Intent new_intent = new Intent(getApplicationContext(), DetailedMenu4.class);
+                new_intent.putExtra("login_flag", login_flag);
+                new_intent.putExtra("auth", auth); // Detailed에서 권한에 따라 메뉴를 등록하는 버튼을 보거나 보지 않기 위해 사용
+                startActivity(new_intent);
             }
         });
 
-        // 등록 업체가 없음을 알림
+
         ImageButton detailedMenu2 = (ImageButton) findViewById(R.id.imageButton2);
         detailedMenu2.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -93,6 +99,8 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        // 등록 업체가 없음을 알림
         ImageButton detailedMenu3 = (ImageButton) findViewById(R.id.imageButton3);
         detailedMenu3.setOnClickListener(new View.OnClickListener(){
             @Override

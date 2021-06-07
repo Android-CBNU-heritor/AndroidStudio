@@ -81,10 +81,12 @@ public class Login extends AppCompatActivity {
                             Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                             Toast.makeText(getApplicationContext(), String.format("%s님 환영합니다.", userID), Toast.LENGTH_SHORT).show();
                             String email = cursor.getString(3);
+                            Log.d(TAG, "email? : " + email);
                             intent.putExtra("userID", userID);
                             intent.putExtra("email", email);
                             flag = true;
                             intent.putExtra("login_flag", flag);
+                            intent.putExtra("auth", cursor.getInt(4)); // ** 해당 테이블의 첫번째 int 이므로 !
 
                             startActivity(intent);
                             break;
@@ -111,6 +113,7 @@ public class Login extends AppCompatActivity {
                 boolean flag = false; // flag for 로그인 메인 | 비로그인 메인
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 intent.putExtra("login_flag", flag);
+                intent.putExtra("auth", -1); // ** 해당 테이블의 첫번째 int 이므로 !
                 startActivity(intent);
             }
         });

@@ -57,12 +57,12 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/layout_btn1"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
 
             <LinearLayout
+                android:id="@+id/layout_btn1"
                 android:layout_width="match_parent"
                 android:layout_height="120dp"
                 android:orientation="horizontal"
@@ -228,6 +228,24 @@
                         android:textSize="15dp" />
 
                 </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linear5"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/generate_button"
+                    android:visibility="gone"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="#BDBDBD"
+                    android:layout_gravity="bottom"
+                    android:text="등록"
+                    android:textStyle="bold"/>
+
             </LinearLayout>
 
 

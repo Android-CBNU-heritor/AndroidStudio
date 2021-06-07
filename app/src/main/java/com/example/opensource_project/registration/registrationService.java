@@ -56,7 +56,7 @@ public class registrationService extends AppCompatActivity {
                 Cursor cursor;
                 cursor = database.rawQuery("SELECT * FROM userTable", null);
                 cursor.moveToFirst();
-                cmp = cursor.getString(0); // 에러 유발 지점: 해결 --> cursor 이동과 getString 개념 잘 숙지할 것 
+                cmp = cursor.getString(0); // 에러 유발 지점: 해결 --> cursor 이동과 getString 개념 잘 숙지할 것
 
                 flag = cmp.equals(userId);
 
@@ -69,7 +69,7 @@ public class registrationService extends AppCompatActivity {
                 do{
                     cmp = cursor.getString(0);
 
-                    Log.d(TAG, "Insert Data: " + userId);
+                    Log.d(TAG, "Inserted Data: " + userId);
                     Log.d(TAG, "Comparing ID: " + cmp);
 
                     if(cmp.equals(userId)){
