@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.opensource_project.registration.createDatabaseController;
@@ -28,11 +29,7 @@ public class Login extends AppCompatActivity {
         Button loginbutton = (Button) findViewById(R.id.Login);
         Button registButton = (Button) findViewById(R.id.Changeregistration);
 
-        boolean flag = false;
-
-        EditText getUserSting;
         createDatabaseController mainDB = new createDatabaseController(getApplicationContext(), "Maindb", null, 1);
-
         SQLiteDatabase database;                                 // Sqlite db 연결을 위한 객체
         database = mainDB.getReadableDatabase();                 // Maindb의 데이터 내용을 가져옴
         mainDB.onCreate(database);
@@ -40,7 +37,6 @@ public class Login extends AppCompatActivity {
         Cursor cursor;
         cursor = database.rawQuery("select * from userTable", null); // **모든 컬럼 접근
         //cursor = database.rawQuery("SELECT id FROM userTable", null); // 컬럼 한 개 접근
-
 
 
         registButton.setOnClickListener(new View.OnClickListener() {
@@ -55,13 +51,11 @@ public class Login extends AppCompatActivity {
         loginbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 // cmp1 == ID column, cmp2 == PW inserted
                 String cmp1, cmp2;
+                boolean flag = false; // flag for 로그인 메인 | 비로그인 메인
 
                 cursor.moveToFirst();
-                cmp1 = cursor.getString(0);
-                cmp2 = cursor.getString(cursor.getColumnIndex("pw"));
 
                 EditText getUserSting;
                 getUserSting = (EditText) findViewById(R.id.idText); // 유저 아이디 입력 가져오기
@@ -74,12 +68,24 @@ public class Login extends AppCompatActivity {
                 Log.d(TAG, "Inserted PW: " + userPW);
 
                 do{
+                    cmp1 = cursor.getString(0);
+                    cmp2 = cursor.getString(1);
+
+                    //cmp2 = cursor.getString(cursor.getColumnIndex("pw"));
+
                     if(cmp1.equals(userID)){
                         login_flag[0] = true;
-
                         if(cmp2.equals(userPW)){
+
                             login_flag[1] = true;
                             Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                            Toast.makeText(getApplicationContext(), String.format("%s님 환영합니다.", userID), Toast.LENGTH_SHORT).show();
+                            String email = cursor.getString(3);
+                            intent.putExtra("userID", userID);
+                            intent.putExtra("email", email);
+                            flag = true;
+                            intent.putExtra("login_flag", flag);
+
                             startActivity(intent);
                             break;
                         }
@@ -97,5 +103,16 @@ public class Login extends AppCompatActivity {
             }
         });
 
+        // 로그인 없이 둘러보기 기능
+        TextView without_login = (TextView) findViewById(R.id.without_login);
+        without_login.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                boolean flag = false; // flag for 로그인 메인 | 비로그인 메인
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                intent.putExtra("login_flag", flag);
+                startActivity(intent);
+            }
+        });
     }
 }

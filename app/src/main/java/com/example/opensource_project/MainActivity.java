@@ -14,6 +14,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.opensource_project.registration.registrationService;
@@ -34,6 +35,33 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Intent intent = getIntent();
+
+        boolean login_flag = intent.getExtras().getBoolean("login_flag");
+        if(login_flag == true){
+            String userID = intent.getExtras().getString("userID");
+        }
+
+        TextView login_logout = (TextView) findViewById(R.id.login_logout);
+
+        if(login_flag == true) login_logout.setText("로그아웃");
+
+        login_logout.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                boolean login_logout = login_flag;
+                Intent logout = new Intent(getApplicationContext(), Login.class);
+                if (login_logout == true){
+                    login_logout = false; // 사용하진 않았지만, 혹시 몰라 일단 둠
+                    startActivity(logout);
+                }
+                else {
+                    startActivity(logout);
+                }
+            }
+        });
+
 
 
         // -- Detailed menu1 - Pizza --

@@ -56,6 +56,7 @@ public class registrationService extends AppCompatActivity {
                 Cursor cursor;
                 cursor = database.rawQuery("SELECT id FROM userTable", null);
                 cursor.moveToFirst();
+                cursor.moveToNext();
                 cmp = cursor.getString(0); // 에러 유발 코드
 
                 flag = cmp.equals(userId);
