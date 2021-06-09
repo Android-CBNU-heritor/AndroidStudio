@@ -36,7 +36,7 @@
                     android:layout_width="80dp"
                     android:layout_height="49dp"
                     android:layout_gravity="center"
-                    android:src="@drawable/lafoora_main" />
+                    android:src="@drawable/lfr_logo" />
             </LinearLayout>
 
             <LinearLayout
