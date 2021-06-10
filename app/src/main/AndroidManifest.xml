@@ -18,6 +18,21 @@
         </activity>
         <activity android:name=".MainActivity"></activity>
         <activity android:name=".Events" />
+        <activity android:name=".DetailedMenu1" />
+        <activity android:name=".DetailedMenu2" />
+        <activity android:name=".DetailedMenu4" />
+        <activity android:name=".buyProduct" />
+        <activity android:name=".Menu_no" />
+        <activity android:name=".RegisterProduct" />
+        <activity android:name=".Payment"/>
+        <activity android:name=".Payment2"/>
+        <activity android:name=".Practice_db" />
+        <activity android:name=".registration.registrationService"/>
+
     </application>
+
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
 </manifest>
