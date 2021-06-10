@@ -7,9 +7,17 @@ import androidx.viewpager2.widget.CompositePageTransformer;
 import androidx.viewpager2.widget.MarginPageTransformer;
 import androidx.viewpager2.widget.ViewPager2;
 
+import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.example.opensource_project.registration.registrationService;
 
 import me.relex.circleindicator.CircleIndicator;
 import me.relex.circleindicator.CircleIndicator3;
@@ -22,10 +30,89 @@ public class MainActivity extends AppCompatActivity {
     int[] images = {R.drawable.fish,R.drawable.menu2,R.drawable.menu3,R.drawable.menu4};
     MainAdapter adapter;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Intent intent = getIntent();
+
+        boolean login_flag = intent.getExtras().getBoolean("login_flag");
+        int auth = intent.getExtras().getInt("auth");
+        if(login_flag == true){
+            String userID = intent.getExtras().getString("userID");
+        }
+
+        TextView login_logout = (TextView) findViewById(R.id.login_logout);
+
+        if(login_flag == true) login_logout.setText("로그아웃");
+
+        login_logout.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                boolean login_logout = login_flag;
+                Intent logout = new Intent(getApplicationContext(), Login.class);
+                if (login_logout == true){
+                    login_logout = false; // 사용하진 않지만, 혹시 몰라 일단 둠
+                    Toast.makeText(getApplicationContext(), "로그아웃 되었습니다.", Toast.LENGTH_SHORT).show();
+                    startActivity(logout);
+                }
+                else {
+                    startActivity(logout);
+                }
+            }
+        });
+
+
+
+        // -- Detailed menu1 - Pizza --
+        ImageButton detailedMenu1 = (ImageButton) findViewById(R.id.imageButton1);
+        detailedMenu1.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                Intent new_intent = new Intent(getApplicationContext(), DetailedMenu1.class);
+                new_intent.putExtra("login_flag", login_flag);
+                new_intent.putExtra("auth", auth); // Detailed에서 권한에 따라 메뉴를 등록하는 버튼을 보거나 보지 않기 위해 사용
+                startActivity(new_intent);
+            }
+        });
+
+        // -- Detailed menu4 - Chicken --
+        ImageButton detailedMenu4 = (ImageButton) findViewById(R.id.imageButton4);
+        detailedMenu4.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                Intent new_intent = new Intent(getApplicationContext(), DetailedMenu4.class);
+                new_intent.putExtra("login_flag", login_flag);
+                new_intent.putExtra("auth", auth); // Detailed에서 권한에 따라 메뉴를 등록하는 버튼을 보거나 보지 않기 위해 사용
+                startActivity(new_intent);
+            }
+        });
+
+
+        ImageButton detailedMenu2 = (ImageButton) findViewById(R.id.imageButton2);
+        detailedMenu2.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                Intent intent = new Intent(getApplicationContext(), Menu_no.class);
+                startActivity(intent);
+            }
+        });
+
+        // 등록 업체가 없음을 알림
+        ImageButton detailedMenu3 = (ImageButton) findViewById(R.id.imageButton3);
+        detailedMenu3.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                Toast.makeText(MainActivity.this, "등록된 업체가 없습니다.", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
+
+
+
 
 
         //Assign variable
